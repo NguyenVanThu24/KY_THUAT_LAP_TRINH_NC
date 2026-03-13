@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Toán Ba Lô (Knapsack 0/1)</title>
+    <!-- Thư viện Font chữ đẹp (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link file CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>🎒 Giải Bài Toán Ba Lô 0/1</h1>
+            <p>Ứng dụng tối ưu hóa với thuật toán Quy Hoạch Động (Dynamic Programming)</p>
+        </header>
+
+        <div class="main-content">
+            <!-- PANEL NHẬP LIỆU (Trái) -->
+            <section class="input-panel glass-card">
+                <h2>Cài Đặt Dữ Liệu</h2>
+                
+                <div class="form-group">
+                    <label for="capacity">Sức chứa tối đa (W):</label>
+                    <input type="number" id="capacity" placeholder="Ví dụ: 10" value="10" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="weights">Trọng lượng (cách nhau bởi dấu phẩy):</label>
+                    <input type="text" id="weights" placeholder="Ví dụ: 2, 3, 4, 5" value="2, 3, 4, 5">
+                </div>
+
+                <div class="form-group">
+                    <label for="values">Giá trị (cách nhau bởi dấu phẩy):</label>
+                    <input type="text" id="values" placeholder="Ví dụ: 3, 4, 5, 8" value="3, 4, 5, 8">
+                </div>
+
+                <button id="btn-solve" class="btn-primary">
+                    <span class="btn-text">Tính Toán & Lấy Lời Giải</span>
+                    <span class="spinner hidden"></span>
+                </button>
+
+                <div id="error-message" class="error-msg hidden">
+                    <!-- Nơi hiển thị lỗi validate -->
+                </div>
+            </section>
+
+            <!-- PANEL KẾT QUẢ (Phải) -->
+            <section class="result-panel glass-card">
+                <h2>Kết Quả Tối Ưu</h2>
+                
+                <div class="summary-results">
+                    <div class="result-box max-value-box">
+                        <span class="label">Tổng giá trị lớn nhất</span>
+                        <span id="res-max-value" class="value highlight-text">-</span>
+                    </div>
+                    
+                    <div class="result-box selected-items-box">
+                        <span class="label">Các món đồ được chọn (Vị trí)</span>
+                        <span id="res-items" class="value">-</span>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <h3>Minh họa Bảng Quy Hoạch Động (DP)</h3>
+                    <div class="table-scroll-wrapper">
+                        <!-- Table được tạo tự động bởi JavaScript -->
+                        <table id="dp-table">
+                            <thead>
+                                <tr>
+                                    <th>Chưa có dữ liệu tính toán</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data rows render bằng JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer class="footer">
+            <p>Dự án minh họa | Python Flask & Vanilla JS</p>
+        </footer>
+    </div>
+
+    <!-- Link file JavaScript -->
+    <script src="/static/script.js"></script>
+</body>
+</html>

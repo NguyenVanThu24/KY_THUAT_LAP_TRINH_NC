@@ -1,0 +1,323 @@
+:root {
+    /* Color Palette */
+    --primary-color: #4f46e5;      /* Indigo */
+    --primary-hover: #4338ca;
+    --bg-gradient-start: #f3f4f6;  /* Light gray */
+    --bg-gradient-end: #e0e7ff;    /* Light indigo */
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(255, 255, 255, 0.5);
+    --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --highlight-color: #f59e0b;
+    
+    /* Metrics */
+    --border-radius-lg: 16px;
+    --border-radius-md: 8px;
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+}
+
+.app-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* --- HEADER --- */
+.header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #4f46e5, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* --- MAIN LAYOUT --- */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- GLASSMORPHISM CARDS --- */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.glass-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* --- FORM & INPUTS --- */
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-md);
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-family: inherit;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    transition: all var(--transition-speed);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* --- BUTTONS --- */
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), #6366f1);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+    background: linear-gradient(135deg, var(--primary-hover), #4f46e5);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- ERROR MESSAGE --- */
+.error-msg {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: #fee2e2;
+    border-left: 4px solid var(--error-color);
+    color: #991b1b;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- RESULTS AREA --- */
+.summary-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.result-box {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.result-box .label {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.result-box .value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.highlight-text {
+    color: var(--success-color) !important;
+    font-size: 2rem !important;
+}
+
+/* --- TABLE --- */
+.table-container {
+    margin-top: 2rem;
+}
+
+.table-container h3 {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.table-scroll-wrapper {
+    overflow-x: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    background-color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ensure lateral scroll if too many columns */
+}
+
+th, td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #f3f4f6;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #334155;
+    position: sticky;
+    top: 0;
+}
+
+/* Specific table columns */
+th.col-item {
+    background-color: #f1f5f9;
+    min-width: 180px;
+}
+
+td.col-item-val {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+}
+
+tbody tr:hover {
+    background-color: #f0fdf4; /* Light green hover */
+}
+
+/* Highlight for selected item path tracing can be added using JS */
+.cell-selected {
+    background-color: #dcfce7 !important; /* Green */
+    font-weight: bold;
+    color: #166534;
+}
+
+/* --- SPINNER ANIMATION --- */
+.spinner {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- FOOTER --- */
+.footer {
+    text-align: center;
+    padding-top: 2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
